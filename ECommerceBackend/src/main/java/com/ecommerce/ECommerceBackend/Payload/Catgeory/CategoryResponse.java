@@ -1,4 +1,4 @@
-package com.ecommerce.ECommerceBackend.Payload;
+package com.ecommerce.ECommerceBackend.Payload.Catgeory;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,7 +14,7 @@ public class CategoryResponse {
     private Integer pageNumber;
     private Integer pageSize;
     private Long totalElements;
-    private Integer totalpages;
+    private Integer totalPages;
     private boolean lastPage;
     private String sortBy;
     private String sortOrder;

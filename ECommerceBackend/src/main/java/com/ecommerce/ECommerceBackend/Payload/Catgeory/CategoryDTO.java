@@ -1,4 +1,4 @@
-package com.ecommerce.ECommerceBackend.Payload;
+package com.ecommerce.ECommerceBackend.Payload.Catgeory;
 
 
 import lombok.AllArgsConstructor;

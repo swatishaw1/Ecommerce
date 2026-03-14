@@ -1,8 +1,8 @@
 package com.ecommerce.ECommerceBackend.Controller;
 
 import com.ecommerce.ECommerceBackend.Config.AppConstants;
-import com.ecommerce.ECommerceBackend.Payload.CategoryDTO;
-import com.ecommerce.ECommerceBackend.Payload.CategoryResponse;
+import com.ecommerce.ECommerceBackend.Payload.Catgeory.CategoryDTO;
+import com.ecommerce.ECommerceBackend.Payload.Catgeory.CategoryResponse;
 import com.ecommerce.ECommerceBackend.Service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class CategoryController {
 
     @PostMapping("/public/categories")
     public ResponseEntity<CategoryDTO> addCategory(@Valid @RequestBody CategoryDTO categoryDTO){
-        return new ResponseEntity<>(categoryService.createCatgeory(categoryDTO),HttpStatus.CREATED);
+        return new ResponseEntity<>(categoryService.createCategory(categoryDTO),HttpStatus.CREATED);
     }
 
     @DeleteMapping("/admin/categories/{categoryDTOId}")

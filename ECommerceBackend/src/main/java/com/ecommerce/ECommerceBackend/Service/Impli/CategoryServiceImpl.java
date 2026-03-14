@@ -3,8 +3,8 @@ package com.ecommerce.ECommerceBackend.Service.Impli;
 import com.ecommerce.ECommerceBackend.Exceptions.ApiException;
 import com.ecommerce.ECommerceBackend.Exceptions.ResourceNotFoundException;
 import com.ecommerce.ECommerceBackend.Model.Category;
-import com.ecommerce.ECommerceBackend.Payload.CategoryDTO;
-import com.ecommerce.ECommerceBackend.Payload.CategoryResponse;
+import com.ecommerce.ECommerceBackend.Payload.Catgeory.CategoryDTO;
+import com.ecommerce.ECommerceBackend.Payload.Catgeory.CategoryResponse;
 import com.ecommerce.ECommerceBackend.Repository.CategoryRepository;
 import com.ecommerce.ECommerceBackend.Service.CategoryService;
 import org.modelmapper.ModelMapper;
@@ -33,20 +33,19 @@ public class CategoryServiceImpl implements CategoryService {
         if (categories.isEmpty()){
             throw new ApiException("No Category Added");
         }
-        //Implementing category to category DTO
         List<CategoryDTO> categoryDTOS = categories.stream().map(category -> modelMapper.map(category,CategoryDTO.class)).toList();
         CategoryResponse categoryResponse = new CategoryResponse();
         categoryResponse.setContent(categoryDTOS);
         categoryResponse.setPageNumber(categoryPage.getNumber());
         categoryResponse.setPageSize(categoryPage.getSize());
         categoryResponse.setTotalElements(categoryPage.getTotalElements());
-        categoryResponse.setTotalpages(categoryPage.getTotalPages());
+        categoryResponse.setTotalPages(categoryPage.getTotalPages());
         categoryResponse.setLastPage(categoryPage.isLast());
         return categoryResponse;
     }
 
     @Override
-    public CategoryDTO createCatgeory(CategoryDTO categoryDTO) {
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
         Category category = modelMapper.map(categoryDTO,Category.class);
         Category categoryFromDb = categoryRepository.findByCategoryName(category.getCategoryName());
         if (categoryFromDb!=null){
